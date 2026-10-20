@@ -1,0 +1,31 @@
+﻿[
+    {
+        "name": "Google Chrome",
+        "id": "Google.Chrome",
+        "version": "1",
+        "url": "https://dl.google.com/dl/chrome/install/googlechromestandaloneenterprise64.msi",
+        "file": "chrome"
+    },
+    {
+        "name": "MPC-BE",
+        "id": "MPC-BE.MPC-BE",
+        "version": "1",
+        "url": "https://github.com/Aleksoid1978/MPC-BE/releases/download/1.9.1/MPC-BE.1.9.1.x64-installer.zip",
+        "file": "mpc-be"
+    },
+    {
+        "name": "WinRAR",
+        "id": "RARLab.WinRAR",
+        "version": "1",
+        "url": "https://www.rarlab.com/rar/winrar-x64-723tr.exe",
+        "file": "winrar",
+        "locale": "tr"
+    },
+    {
+        "name": "7zip",
+        "id": "7zip.7zip",
+        "version": "1",
+        "url": "https://www.7-zip.org/a/7z2603-x64.msi",
+        "file": "7zip"
+    }
+]

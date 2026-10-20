@@ -1,0 +1,23 @@
+{
+    "theme": {
+        "display_mode": "CLI"
+    },
+    "auto_install": [
+        {
+            "image": "/Windows_10_EN_22H2_x64.iso",
+            "template": ["/ventoy/default_en.xml"]
+        },
+        {
+            "image": "/Windows_10_TR_22H2_x64.iso",
+            "template": ["/ventoy/default_tr.xml"]
+        },
+        {
+            "image": "/Windows_11_EN_25H2_x64.iso",
+            "template": ["/ventoy/default_en.xml"]
+        },
+        {
+            "image": "/Windows_11_TR_25H2_x64.iso",
+            "template": ["/ventoy/default_tr.xml"]
+        }
+    ]
+}
