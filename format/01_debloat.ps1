@@ -57,6 +57,8 @@ Write-Host "RemovePrinters"
 RemovePrinters
 Write-Host "RemoveEdgeLnk"
 RemoveEdgeLnk
+Write-Host "RemoveOneDrive"
+RemoveOneDrive
 
 Write-Host -ForegroundColor Yellow "Reboot system [ENTER] or any other key to Exit"
 $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
