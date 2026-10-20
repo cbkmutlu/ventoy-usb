@@ -429,12 +429,17 @@ function DisableWidgets {
     if (-not $HKCU) {
         $path = EnsurePath -Path "HKLM:\Software\Policies\Microsoft\Windows\CloudContent"
         Set-ItemProperty -Path $path -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 1
+
+        $path = EnsurePath -Path "HKLM:\Software\Policies\Microsoft\Dsh"
+        Set-ItemProperty -Path $path -Name "AllowNewsAndInterests" -Type DWord -Value 0
+
+        $path = EnsurePath -Path "HKLM:\SOFTWARE\Microsoft\PolicyManager\default\NewsAndInterests\AllowNewsAndInterests"
+        Set-ItemProperty -Path $path -Name "value" -Type DWord -Value 0
     }
 
     $path = EnsurePath -Path "Registry::HKEY_USERS\$userId\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced"
     Set-ItemProperty -Path $path -Name "TaskbarMn" -Type DWord -Value 0
     Set-ItemProperty -Path $path -Name "TaskbarAl" -Type DWord -Value 0
-    Set-ItemProperty -Path $path -Name "TaskbarDa" -Type DWord -Value 0
 }
 
 # Disables location tracking.
