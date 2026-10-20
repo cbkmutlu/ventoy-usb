@@ -15,8 +15,7 @@ $apps = @(
     [PSCustomObject]@{ name = "Google Chrome"; func = "GoogleChrome" },
     [PSCustomObject]@{ name = "MPC-BE Codec"; func = "MPCBE" },
     [PSCustomObject]@{ name = "WinRAR"; func = "WinRAR" },
-    [PSCustomObject]@{ name = "7Zip"; func = "7Zip" },
-    [PSCustomObject]@{ name = "DotNet 3.5"; func = "InstallNet35" }
+    [PSCustomObject]@{ name = "7Zip"; func = "7Zip" }
 )
 
 # Create form

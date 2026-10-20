@@ -700,14 +700,8 @@ function RemovePackages {
 
 # Removes OneDrive.
 function RemoveOneDrive {
-    if (Get-Process OneDrive -ErrorAction SilentlyContinue) {
-        for ($i = 0; $i -lt 10; $i++) {
-            Stop-Process -Name "OneDrive" -Force -ErrorAction SilentlyContinue
-            if (!(Get-Process OneDrive -ErrorAction SilentlyContinue)) {
-                break
-            }
-        }
-    }
+    taskkill.exe /F /IM "OneDrive.exe" 2>&1 | Out-Null
+    taskkill.exe /F /IM "explorer.exe" 2>&1 | Out-Null
     Start-Sleep -Seconds 2
 
     $setup = "$env:SYSTEMROOT\System32\OneDriveSetup.exe"
@@ -715,12 +709,8 @@ function RemoveOneDrive {
         $setup = "$env:SYSTEMROOT\SysWOW64\OneDriveSetup.exe"
     }
     if (Test-Path $setup) {
-        Start-Process $setup "/uninstall /allusers" -Wait -NoNewWindow
+        Start-Process $setup "/uninstall" -Wait -NoNewWindow
     }
-
-    Start-Sleep -Seconds 2
-    Stop-Process -Name "explorer" -Force -ErrorAction SilentlyContinue
-    Start-Sleep -Seconds 2
 
     $paths = @(
         "$userProfile\OneDrive",
@@ -733,17 +723,15 @@ function RemoveOneDrive {
         Remove-Item -Path $p -Recurse -Force -ErrorAction SilentlyContinue
     }
 
+    Remove-Item -Path "$userProfile\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk" -ErrorAction SilentlyContinue | Out-Null
+
     $path = EnsurePath("Registry::HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\ShellFolder");
     Set-ItemProperty -Path $path -Name Attributes -Value 0 -Type DWord -ErrorAction SilentlyContinue
     $path = EnsurePath("Registry::HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}\ShellFolder");
     Set-ItemProperty -Path $path -Name Attributes -Value 0 -Type DWord -ErrorAction SilentlyContinue
 
     Get-ScheduledTask -ErrorAction SilentlyContinue | Where-Object { $_.TaskName -like "*OneDrive*" } | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
-}
-
-#Installs .NET 3.5
-function InstallNet35 {
-    DISM /Online /Enable-Feature /FeatureName:NetFx3 /All /NoRestart > $null 2>&1
+    Start-Process "explorer.exe"
 }
 
 # Adobe Acrobat Reader
