@@ -750,7 +750,7 @@ function InstallNet35 {
 function AcrobatReader {
     param([string]$Path)
 
-    Start-Process -FilePath "$Path\adobereader.exe" -ArgumentList "/sAll /rs /msi EULA_ACCEPT=YES DISABLEDESKTOPSHORTCUT=1 IW_DEFAULT_VERB=Read LEAVE_PDFOWNERSHIP=NO" -PassThru -Wait
+    $process = Start-Process -FilePath "$Path\adobereader.exe" -ArgumentList "/sAll /rs /msi EULA_ACCEPT=YES DISABLEDESKTOPSHORTCUT=1 IW_DEFAULT_VERB=Read LEAVE_PDFOWNERSHIP=NO" -PassThru -Wait
 
     if (Test-Path "$basePath\pdf-adobereader.msp") {
         Start-Process -FilePath "msiexec.exe" -ArgumentList "/update", "$basePath\pdf-adobereader.msp", "/qn /norestart" -PassThru -Wait
@@ -764,9 +764,8 @@ function AcrobatReader {
 
     # PDF-XChange Editor PDF Previewer Handler
     # https://www.pdf-xchange.com/EditorV10.x64.msi
-
     if (Test-Path "$basePath\pdf-xchange.msi") {
-        $process = Start-Process -FilePath "msiexec.exe" -ArgumentList "/i", "$basePath\pdf-xchange.msi", "/qn", "/norestart", "ADDLOCAL=F_ShellExt", "SET_AS_DEFAULT=0" -PassThru -Wait
+        Start-Process -FilePath "msiexec.exe" -ArgumentList "/i", "$basePath\pdf-xchange.msi", "/qn", "/norestart", "ADDLOCAL=F_ShellExt", "SET_AS_DEFAULT=0" -PassThru -Wait
     }
 
     return ($process.ExitCode -in @(0, 3010, 1641))
@@ -781,7 +780,7 @@ function AcrobatReaderRegistry {
     # Remove first opening tips
     Set-ItemProperty -Path $path -Name "bToggleFTE" -Type DWord -Value 1
 
-    $path = EnsurePath -Path "$base\cServices"
+    $path = EnsurePath -Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Adobe\Acrobat Reader\2020\FeatureLockDown\cServices"
     # Disable Adobe online services
     Set-ItemProperty -Path $path -Name "bUpdater" -Type DWord -Value 0
     # Adobe Document Cloud
@@ -790,7 +789,7 @@ function AcrobatReaderRegistry {
     # Box, Dropbox, Google Drive, OneDrive
     Set-ItemProperty -Path $path -Name "bToggleWebConnectors" -Type DWord -Value 1
 
-    $path = EnsurePath -Path "$base\cSharePoint"
+    $path = EnsurePath -Path "HKLM:\SOFTWARE\WOW6432Node\Policies\Adobe\Acrobat Reader\2020\FeatureLockDown\cSharePoint"
     # SharePoint
     Set-ItemProperty -Path $path -Name "bDisableSharePointFeatures" -Type DWord -Value 1
 }

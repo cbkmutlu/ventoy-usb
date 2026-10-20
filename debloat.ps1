@@ -7,97 +7,107 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 
 . "$PSScriptRoot\ventoy\functions.ps1"
 
-InitializeUserContext
 Write-Host "InitializeUserContext"
-CreateIE
+InitializeUserContext
 Write-Host "CreateIE"
-SetTimeFormat
+CreateIE
 Write-Host "SetTimeFormat"
-SetPowerConfig
+SetTimeFormat
 Write-Host "SetPowerConfig"
-SetUACLow
+SetPowerConfig
 Write-Host "SetUACLow"
-SetP2PUpdateLocal
+SetUACLow
 Write-Host "SetP2PUpdateLocal"
-SetW11RightClick
+SetP2PUpdateLocal
 Write-Host "SetW11RightClick"
-SetUpdateTarget
+SetW11RightClick
 Write-Host "SetUpdateTarget"
-SetAutoTray
+SetUpdateTarget
 Write-Host "SetAutoTray"
-SetSearchBoxAsIcon
+SetAutoTray
 Write-Host "SetSearchBoxAsIcon"
-SetTheme
+SetSearchBoxAsIcon
 Write-Host "SetTheme"
-SetAppearance
+SetTheme
 Write-Host "SetAppearance"
-HideRecentShortcuts
+SetAppearance
 Write-Host "HideRecentShortcuts"
-HideItemsFromThisPC
+HideRecentShortcuts
 Write-Host "HideItemsFromThisPC"
-ShowItemsOnDesktop
+HideItemsFromThisPC
 Write-Host "ShowItemsOnDesktop"
-ClearTaskbar
+ShowItemsOnDesktop
 Write-Host "ClearTaskbar"
-ClearStartMenu
+ClearTaskbar
 Write-Host "ClearStartMenu"
-DisableStartMenuPrograms
+ClearStartMenu
 Write-Host "DisableStartMenuPrograms"
-DisableStartMenuNotifications
+DisableStartMenuPrograms
 Write-Host "DisableStartMenuNotifications"
-DisableStartMenuFolders
+DisableStartMenuNotifications
 Write-Host "DisableStartMenuFolders"
-DisableWindowsInk
+DisableStartMenuFolders
 Write-Host "DisableWindowsInk"
-DisableNewsAndInterests
+DisableWindowsInk
 Write-Host "DisableNewsAndInterests"
-DisableAutoLogger
+DisableNewsAndInterests
 Write-Host "DisableAutoLogger"
-DisableTelemetry
+DisableAutoLogger
 Write-Host "DisableTelemetry"
-DisableSmartScreen
+DisableTelemetry
 Write-Host "DisableSmartScreen"
-DisableCopilot
+DisableSmartScreen
 Write-Host "DisableCopilot"
-DisableCortana
+DisableCopilot
 Write-Host "DisableCortana"
-DisableCortanaSearch
+DisableCortana
 Write-Host "DisableCortanaSearch"
-DisableWebSearch
+DisableCortanaSearch
 Write-Host "DisableWebSearch"
-DisableAppSuggestions
+DisableWebSearch
 Write-Host "DisableAppSuggestions"
-DisableWidgets
+DisableAppSuggestions
 Write-Host "DisableWidgets"
-DisableLocationTracking
+DisableWidgets
 Write-Host "DisableLocationTracking"
-DisableWiFiSense
+DisableLocationTracking
 Write-Host "DisableWiFiSense"
-DisableAdvertisingID
+DisableWiFiSense
 Write-Host "DisableAdvertisingID"
-DisableFeedback
+DisableAdvertisingID
 Write-Host "DisableFeedback"
-DisableErrorReporting
+DisableFeedback
 Write-Host "DisableErrorReporting"
-DisableScheduledTasks
+DisableErrorReporting
 Write-Host "DisableScheduledTasks"
-DisableDiagTrack
+DisableScheduledTasks
 Write-Host "DisableDiagTrack"
-DisablePrefetcher
+DisableDiagTrack
 Write-Host "DisablePrefetcher"
-DisableRecommended
+DisablePrefetcher
 Write-Host "DisableRecommended"
-DisableScreenSaver
+DisableRecommended
 Write-Host "DisableScreenSaver"
-DisableNetworkDevice
+DisableScreenSaver
 Write-Host "DisableNetworkDevice"
-RemovePrinters
+DisableNetworkDevice
 Write-Host "RemovePrinters"
-RemoveOptionalFeatures
+RemovePrinters
 Write-Host "RemoveOptionalFeatures"
-RemoveEdgeLnk
+RemoveOptionalFeatures
 Write-Host "RemoveEdgeLnk"
-RemovePackages
+RemoveEdgeLnk
 Write-Host "RemovePackages"
-RemoveOneDrive
+RemovePackages
 Write-Host "RemoveOneDrive"
+RemoveOneDrive
+
+Write-Host -ForegroundColor Yellow "Reboot system [ENTER] or any other key to Exit"
+$key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+
+if ($key.VirtualKeyCode -eq 13) {
+    shutdown -r -t 3
+}
+else {
+    exit 1
+}

@@ -7,56 +7,56 @@ if (-not ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 
 . "$PSScriptRoot\..\ventoy\functions.ps1"
 
-InitializeUserContext
 Write-Host "InitializeUserContext"
-SetTimeFormat -HKCU
+InitializeUserContext
 Write-Host "SetTimeFormat"
-SetP2PUpdateLocal -HKCU
+SetTimeFormat -HKCU
 Write-Host "SetP2PUpdateLocal"
-SetW11RightClick
+SetP2PUpdateLocal -HKCU
 Write-Host "SetW11RightClick"
-SetAutoTray
+SetW11RightClick
 Write-Host "SetAutoTray"
-SetSearchBoxAsIcon
+SetAutoTray
 Write-Host "SetSearchBoxAsIcon"
-SetTheme
+SetSearchBoxAsIcon
 Write-Host "SetTheme"
-SetAppearance
+SetTheme
 Write-Host "SetAppearance"
-HideRecentShortcuts
+SetAppearance
 Write-Host "HideRecentShortcuts"
-ShowItemsOnDesktop
+HideRecentShortcuts
 Write-Host "ShowItemsOnDesktop"
-ClearTaskbar
+ShowItemsOnDesktop
 Write-Host "ClearTaskbar"
-ClearStartMenu
+ClearTaskbar
 Write-Host "ClearStartMenu"
-DisableNewsAndInterests -HKCU
+ClearStartMenu
 Write-Host "DisableNewsAndInterests"
-DisableSmartScreen
+DisableNewsAndInterests -HKCU
 Write-Host "DisableSmartScreen"
-DisableCopilot
+DisableSmartScreen
 Write-Host "DisableCopilot"
-DisableCortana
+DisableCopilot
 Write-Host "DisableCortana"
-DisableWebSearch
+DisableCortana
 Write-Host "DisableWebSearch"
-DisableAppSuggestions
+DisableWebSearch
 Write-Host "DisableAppSuggestions"
-DisableWidgets -HKCU
+DisableAppSuggestions
 Write-Host "DisableWidgets"
-DisableAdvertisingID
+DisableWidgets -HKCU
 Write-Host "DisableAdvertisingID"
-DisableFeedback
+DisableAdvertisingID
 Write-Host "DisableFeedback"
-DisableRecommended
+DisableFeedback
 Write-Host "DisableRecommended"
-DisableScreenSaver
+DisableRecommended
 Write-Host "DisableScreenSaver"
-RemovePrinters
+DisableScreenSaver
 Write-Host "RemovePrinters"
-RemoveEdgeLnk
+RemovePrinters
 Write-Host "RemoveEdgeLnk"
+RemoveEdgeLnk
 
 Write-Host -ForegroundColor Yellow "Reboot system [ENTER] or any other key to Exit"
 $key = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
