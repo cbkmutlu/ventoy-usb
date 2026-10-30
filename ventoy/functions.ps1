@@ -571,6 +571,7 @@ function RemovePackages {
         "Microsoft.XboxGameOverlay",
         "Microsoft.XboxGamingOverlay",
         "Microsoft.Xbox.TCUI",
+        "Microsoft.GamingApp",
 
         # Cortana
         "Microsoft.549981C3F5F10",
@@ -588,6 +589,9 @@ function RemovePackages {
         "Microsoft.Office.Sway",
 
         # BuiltIn
+        "Microsoft.BingSearch",
+        "MicrosoftCorporationII.QuickAssist",
+        "Microsoft.PowerAutomateDesktop",
         "Microsoft.3DBuilder",
         "Microsoft.ScreenSketch",
         "Microsoft.AppConnector",
